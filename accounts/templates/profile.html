@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h4 class="mt-4">username : {{user.username}} </h4> <hr> <hr>
+
+<h4><p>following: {{ user.profile.following.all.count }}</p></h4>
+
+{% for following in  user.profile.following.all %}
+<p>{{following}}</p>
+{% endfor %}
+<hr>
+<h4><p>Followers: {{ user.followers.all.count }}</p></h4>
+{% for following in  user.followers.all %}
+<p>{{following}}</p>
+{% endfor %}
+
+{% endblock content %}

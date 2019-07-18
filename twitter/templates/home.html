@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div>
+        <form action="" method="post" >  {% csrf_token %}
+            {{form|crispy}}
+            <button class="btn btn-success" type="submit">Tweet</button>
+        </form>
+        
+    </div>
+{% for tweet in tweets %}
+
+<div>
+        <blockquote class="blockquote text-left mt-4">
+                <p class="mb-0">{{tweet.content}}</p>
+                <footer class="blockquote-footer">By <cite title="Source Title"> <a href="{% url 'view_user' tweet.user %}">{{tweet.user}}</a></cite></footer>
+            </blockquote>
+</div>
+
+<hr>
+{% endfor %}
+{% endblock content %}
